@@ -152,7 +152,7 @@ const PokemonDetail = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col px-4 sm:px-6">
+    <div className="min-h-screen flex flex-col px-4 sm:px-6 pb-16">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       
       <div className="w-full max-w-6xl mx-auto mb-4">
@@ -211,7 +211,7 @@ const PokemonDetail = () => {
         </div>
       </main>
       
-      <footer className="w-full max-w-6xl mx-auto py-6 text-center text-sm text-muted-foreground">
+      <footer className="w-full max-w-6xl mx-auto py-6 text-center text-sm text-muted-foreground mt-auto">
         <p>Made with PokeAPI • Designed for Pokémon trainers</p>
       </footer>
     </div>

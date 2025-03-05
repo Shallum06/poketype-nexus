@@ -17,7 +17,7 @@ const TypeBadge: React.FC<TypeBadgeProps> = ({ type, size = 'md' }) => {
   
   return (
     <span 
-      className={`inline-block rounded-full font-medium ${sizeClasses[size]} transition-transform hover:scale-105 type-${typeFormatted}`}
+      className={`inline-block rounded-full font-medium ${sizeClasses[size]} transition-transform hover:scale-105 type-${typeFormatted} mb-1 mr-1`}
     >
       {type.charAt(0).toUpperCase() + type.slice(1)}
     </span>
