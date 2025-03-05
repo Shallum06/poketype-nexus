@@ -123,6 +123,7 @@ const PokemonDetail = () => {
         <div className="flex-1 flex flex-col items-center justify-center">
           <LoadingSpinner size="lg" />
         </div>
+        <div className="fixed bottom-1 right-2 text-[10px] text-gray-400">SL ♥ LN</div>
       </div>
     );
   }
@@ -147,6 +148,7 @@ const PokemonDetail = () => {
             </Link>
           </div>
         </div>
+        <div className="fixed bottom-1 right-2 text-[10px] text-gray-400">SL ♥ LN</div>
       </div>
     );
   }
@@ -216,6 +218,8 @@ const PokemonDetail = () => {
       <footer className="w-full max-w-6xl mx-auto py-6 text-center text-sm text-muted-foreground mt-auto fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm">
         <p>Made with PokeAPI • Designed for Pokémon trainers</p>
       </footer>
+      
+      <div className="fixed bottom-1 right-2 text-[10px] text-gray-400">SL ♥ LN</div>
     </div>
   );
 };
