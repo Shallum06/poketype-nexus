@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
-
 const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const navigate = useNavigate();
-
   useEffect(() => {
     if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDarkMode(true);
@@ -16,7 +14,6 @@ const Index = () => {
       document.documentElement.classList.remove('dark');
     }
   }, []);
-
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => {
       const newMode = !prevMode;
@@ -30,7 +27,6 @@ const Index = () => {
       return newMode;
     });
   };
-
   return <div className="min-h-screen flex flex-col items-center px-4 sm:px-6 transition-colors duration-300">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       
@@ -69,16 +65,14 @@ const Index = () => {
         <p>Made with PokeAPI • Designed for Pokémon trainers</p>
       </footer>
       
-      <div className="fixed bottom-1 right-2 text-[10px] text-gray-400">SL ♥ LN</div>
+      <div className="fixed bottom-1 right-2 text-[10px] text-gray-400 position absolute">SL ♥ LN</div>
     </div>;
 };
-
 interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
-
 const FeatureCard: React.FC<FeatureCardProps> = ({
   icon,
   title,
@@ -92,5 +86,4 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>;
 };
-
 export default Index;
