@@ -152,7 +152,7 @@ const PokemonDetail = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col px-4 sm:px-6 pb-16">
+    <div className="min-h-screen flex flex-col px-4 sm:px-6">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       
       <div className="w-full max-w-6xl mx-auto mb-4">
@@ -165,53 +165,55 @@ const PokemonDetail = () => {
         </Link>
       </div>
       
-      <main className="flex-1 w-full max-w-6xl mx-auto py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <PokemonCard pokemon={pokemon} />
-            
-            <div className="glass rounded-2xl p-6 animate-fade-in">
-              <h3 className="text-lg font-semibold mb-3">About</h3>
-              <p className="text-balance">
-                {isSpeciesLoading ? "Loading description..." : description}
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div>
-                  <p className="text-sm text-muted-foreground">Height</p>
-                  <p className="font-medium">{(pokemon.height / 10).toFixed(1)}m</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Weight</p>
-                  <p className="font-medium">{(pokemon.weight / 10).toFixed(1)}kg</p>
-                </div>
-              </div>
+      <main className="flex-1 w-full max-w-6xl mx-auto py-6 mb-20">
+        <div className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <PokemonCard pokemon={pokemon} />
             </div>
-          </div>
-          
-          <div>
-            {isTypeDataLoading ? (
-              <div className="h-full flex items-center justify-center">
-                <LoadingSpinner />
-              </div>
-            ) : typeEffectiveness ? (
-              <TypeEffectiveness 
-                weaknesses={typeEffectiveness.weaknesses}
-                resistances={typeEffectiveness.resistances}
-                immunities={typeEffectiveness.immunities}
-              />
-            ) : (
-              <div className="glass rounded-2xl p-6">
-                <p className="text-muted-foreground">
-                  Unable to load type effectiveness data.
+            
+            <div className="space-y-6">
+              <div className="glass rounded-2xl p-6 animate-fade-in">
+                <h3 className="text-lg font-semibold mb-3">About</h3>
+                <p className="text-balance">
+                  {isSpeciesLoading ? "Loading description..." : description}
                 </p>
+                
+                <div className="grid grid-cols-2 gap-4 mt-6">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Height</p>
+                    <p className="font-medium">{(pokemon.height / 10).toFixed(1)}m</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Weight</p>
+                    <p className="font-medium">{(pokemon.weight / 10).toFixed(1)}kg</p>
+                  </div>
+                </div>
               </div>
-            )}
+              
+              {isTypeDataLoading ? (
+                <div className="h-full flex items-center justify-center">
+                  <LoadingSpinner />
+                </div>
+              ) : typeEffectiveness ? (
+                <TypeEffectiveness 
+                  weaknesses={typeEffectiveness.weaknesses}
+                  resistances={typeEffectiveness.resistances}
+                  immunities={typeEffectiveness.immunities}
+                />
+              ) : (
+                <div className="glass rounded-2xl p-6">
+                  <p className="text-muted-foreground">
+                    Unable to load type effectiveness data.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </main>
       
-      <footer className="w-full max-w-6xl mx-auto py-6 text-center text-sm text-muted-foreground mt-auto">
+      <footer className="w-full max-w-6xl mx-auto py-6 text-center text-sm text-muted-foreground mt-auto fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm">
         <p>Made with PokeAPI • Designed for Pokémon trainers</p>
       </footer>
     </div>
