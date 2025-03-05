@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,26 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				pokemon: {
+					normal: '#A8A878',
+					fire: '#F08030',
+					water: '#6890F0',
+					electric: '#F8D030',
+					grass: '#78C850',
+					ice: '#98D8D8',
+					fighting: '#C03028',
+					poison: '#A040A0',
+					ground: '#E0C068',
+					flying: '#A890F0',
+					psychic: '#F85888',
+					bug: '#A8B820',
+					rock: '#B8A038',
+					ghost: '#705898',
+					dragon: '#7038F8',
+					dark: '#705848',
+					steel: '#B8B8D0',
+					fairy: '#EE99AC',
 				}
 			},
 			borderRadius: {
@@ -84,11 +105,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				fadeIn: {
+					from: { opacity: '0' },
+					to: { opacity: '1' }
+				},
+				slideUp: {
+					from: { transform: 'translateY(20px)', opacity: '0' },
+					to: { transform: 'translateY(0)', opacity: '1' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fadeIn 0.5s ease-out forwards',
+				'slide-up': 'slideUp 0.5s ease-out forwards',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			}
 		}
 	},
