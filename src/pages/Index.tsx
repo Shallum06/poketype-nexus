@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -31,7 +31,7 @@ const Index = () => {
     });
   };
 
-  return <div className="min-h-screen flex flex-col items-center px-4 sm:px-6 transition-colors duration-300">
+  return <div className="min-h-screen flex flex-col items-center px-4 sm:px-6 transition-colors duration-300 w-full">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       
       <main className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto py-10">
@@ -57,7 +57,7 @@ const Index = () => {
             <SearchBar />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center animate-slide-up staggered-600">
+          <div className="flex flex-col md:flex-row gap-6 justify-center animate-slide-up staggered-600 w-full">
             <FeatureCard icon={<div className="w-8 h-8 bg-red-500 rounded-full"></div>} title="Type Matchups" description="Know exactly which types are effective against your Pokémon." />
             <FeatureCard icon={<div className="w-8 h-8 bg-blue-500 rounded-full"></div>} title="Battle Ready" description="Build stronger teams with knowledge of type advantages." />
             <FeatureCard icon={<div className="w-8 h-8 bg-green-500 rounded-full"></div>} title="Instant Results" description="Get all the information you need with a simple search." />
@@ -84,7 +84,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
   description
 }) => {
-  return <div className="glass p-6 rounded-2xl flex flex-col items-center text-center space-y-3 max-w-xs">
+  return <div className="glass p-6 rounded-2xl flex flex-col items-center text-center space-y-3 w-full md:max-w-xs">
       <div className="p-2 bg-white/50 dark:bg-gray-800/50 rounded-full">
         {icon}
       </div>

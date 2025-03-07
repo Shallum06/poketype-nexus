@@ -1,4 +1,3 @@
-
 import { toast } from '@/components/ui/use-toast';
 
 export interface Pokemon {
@@ -62,6 +61,18 @@ export interface TypeData {
   };
 }
 
+export interface PokemonListItem {
+  name: string;
+  url: string;
+}
+
+export interface PokemonListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PokemonListItem[];
+}
+
 const API_BASE_URL = 'https://pokeapi.co/api/v2';
 
 // Fetch a Pokemon by name
@@ -118,4 +129,31 @@ export const fetchTypeData = async (url: string): Promise<TypeData> => {
     console.error('Error fetching type data:', error);
     throw error;
   }
+};
+
+// Fetch a list of all Pokemon names (limit can be adjusted)
+export const fetchPokemonList = async (limit: number = 1000): Promise<PokemonListItem[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/pokemon?limit=${limit}`);
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch Pokémon list');
+    }
+    
+    const data: PokemonListResponse = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching Pokémon list:', error);
+    throw error;
+  }
+};
+
+// Filter Pokemon list based on search query
+export const filterPokemonByName = (pokemonList: PokemonListItem[], query: string): PokemonListItem[] => {
+  if (!query) return [];
+  
+  const lowerCaseQuery = query.toLowerCase();
+  return pokemonList
+    .filter(pokemon => pokemon.name.includes(lowerCaseQuery))
+    .slice(0, 10); // Limit to 10 results for better UX
 };
