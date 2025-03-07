@@ -84,6 +84,11 @@ const SearchBar: React.FC = () => {
     }
   }, []);
 
+  // Format Pokemon name for API (lowercase, trim, replace spaces with hyphens)
+  const formatPokemonNameForApi = (name: string): string => {
+    return name.toLowerCase().trim().replace(/\s+/g, '-');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!pokemonName.trim()) {
@@ -94,8 +99,8 @@ const SearchBar: React.FC = () => {
       return;
     }
 
-    // Convert to lowercase and trim for consistent API calls
-    const formattedName = pokemonName.toLowerCase().trim();
+    // Format name properly for API
+    const formattedName = formatPokemonNameForApi(pokemonName);
     navigate(`/pokemon/${formattedName}`);
   };
 
@@ -112,7 +117,7 @@ const SearchBar: React.FC = () => {
     setShowDropdown(false);
     
     // Navigate to the Pokemon's detail page
-    const formattedName = name.toLowerCase().trim();
+    const formattedName = formatPokemonNameForApi(name);
     navigate(`/pokemon/${formattedName}`);
   };
 
